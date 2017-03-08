@@ -1,0 +1,36 @@
+import { RouteConfig } from 'react-router'
+/*
+ *
+ * {{ properCase name }} route
+ *
+ */
+export default (store: Store): RouteConfig => ({
+    path: '{{ path }}',
+    name: '{{ camelCase name }}',
+    breadcrumbName: '{{ camelCase name }}',
+    getComponent(nextState, cb) {
+        require.ensure([], (require) => {
+            {{#if wantActionsAndReducer}}
+            // inject reducer to the store on key '{{ camelCase name }}'
+            const reducer = require('./service').default
+            store.injectReducer({
+                key: '{{ camelCase name }}',
+                reducer,
+            })
+            {{/if}}
+            // load {{ properCase name }} component
+            const {{ properCase name }} = require('./{{ properCase name }}').default
+            // Return component
+            cb(null, {{ properCase name }})
+        })
+    },
+    {{#if injectAsyncRoute}}
+    getChildRoutes(location, cb) {
+        require.ensure([], (require) => {
+            cb(null, [
+               // require('./Detail').default(store)
+            ])
+        })
+    },
+    {{/if}}
+}) 

@@ -1,0 +1,87 @@
+/*
+ *
+ * {{ properCase name }}
+ *
+ */
+
+import * as React from 'react'
+{{#if isSubRoute}}
+import Page from '../../../components/Page'
+{{else}}
+import Page from '../../components/Page'
+{{/if}}
+{{#if wantActionsAndReducer}}
+import { connect } from 'react-redux'
+import { load{{ properCase props }} } from './service'
+{{/if}}
+{{#if wantCSS}}
+import './style.css'
+{{/if}}
+declare interface {{ properCase name }}Props {
+    children?: React.ReactNode
+    {{#if wantActionsAndReducer}}
+    load{{ properCase props }}: Function    
+    {{/if}}
+}
+declare interface {{ properCase name }}State { }
+{{#if isDataTable}}
+import createTable from '../../components/Table'
+declare interface {{ properCase name }} {
+    ID: string
+}
+const Table = createTable<{{ properCase name }}>()
+{{/if}}
+
+class {{ properCase name }} extends React.Component<{{ properCase name }}Props, {{ properCase name }}State> {
+    {{#if wantActionsAndReducer}}
+    componentDidMount() {
+      this.props.load{{ properCase props }}()
+    }
+    {{/if}}
+    render() {
+        return <Page>
+            <Page.Header title="{{properCase name}}"/>
+            <Page.Content>                  
+            {{#if isDataTable}}
+            <Table
+                columns={[
+                    {
+                        title: 'ID',
+                        dataIndex: 'ID',
+                        width: 100
+                    },
+                ]}
+                model="{{ camelCase name }}"
+                url="{{ url }}"
+            />
+            {{else}}                
+                <div className="{{ camelCase name }}">
+                    This is {{properCase name}} Route !      
+                </div>        
+            {{/if}}
+         </Page.Content>
+        </Page> 
+    }
+}
+
+{{#if wantActionsAndReducer}}
+const mapStateToProps = (state) => {
+  const {{ camelCase name }} = state.get('{{ camelCase name }}').toJS()
+  return {{ camelCase name }}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    load{{ properCase props }}: () => dispatch(load{{ properCase props }}()),
+    dispatch,
+  }
+}
+
+declare interface TStateProps { }
+declare interface TDispatchProps { }
+declare interface TOwnProps { }
+
+export default connect<TStateProps, TDispatchProps, TOwnProps>(mapStateToProps, mapDispatchToProps)({{ properCase name }})
+{{else}}
+export default {{ properCase name }}
+{{/if}}

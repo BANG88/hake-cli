@@ -1,0 +1,31 @@
+/* eslint-disable no-unused-vars  */
+
+import expect from 'expect'
+import { Map } from 'immutable'
+
+import {{ camelCase name }}Reducer,{
+  DEFAULT_ACTION,
+  defaultAction,
+} from '../modules'
+
+describe('{{ properCase name }} actions', () => {
+  describe('Default Action', () => {
+    it('has a type of DEFAULT_ACTION', () => {
+      const payload = {}
+      const expected = {
+        type: DEFAULT_ACTION,
+        payload,
+      }
+      expect(defaultAction(payload)).toEqual(expected)
+    })
+  })
+})
+
+
+describe('{{ camelCase name }}Reducer', () => {
+  it('returns the initial state', () => {
+    expect({{ camelCase name }}Reducer(undefined, {})).toEqual(new Map({
+      {{ props }}: []
+    }))
+  })
+})

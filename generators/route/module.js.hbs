@@ -1,0 +1,47 @@
+import { handle } from 'redux-pack'
+import { Map } from 'immutable'
+{{#if isSubRoute}}
+import http from '../../../utils/http'
+{{else}}
+import http from '../../utils/http'
+{{/if}}
+/*
+ * {{ properCase name }} constants
+ */
+export const LOAD_{{ constantCase props }} = 'LOAD_{{ constantCase props }}'
+
+/**
+ * {{ properCase props }} actions
+ * @returns ReduxPackAction
+ */
+export const load{{ properCase props }} = (): ReduxPackAction => {
+    return {
+        type: LOAD_{{ constantCase props }},
+        promise: http.get('/{{  props }}')
+    }
+}
+
+/**
+ * initial state 
+ * @param  {[]}} 
+ */
+export const initialState = Map({
+    {{ props }}: []
+})
+/**
+ * {{ properCase name }} reducer
+ * @param  {} state=initialState
+ * @param  {} action
+ */
+export default (state = initialState, action: ReduxPackFinalAction) => {
+
+    const { type, payload } = action
+    switch (type) {
+        case LOAD_{{ constantCase props }}:
+            return handle(state, action, {
+                success: s => state.set('{{ props }}', payload.data)
+            })
+        default:
+            return state
+    }
+}
