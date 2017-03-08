@@ -30,6 +30,7 @@
   },
   "typings": "dist/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "generators/"
   ]
 }
