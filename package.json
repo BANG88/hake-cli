@@ -2,7 +2,9 @@
   "name": "hake-cli",
   "version": "1.0.0",
   "main": "dist/index.js",
-  "bin": "dist/cli.js",
+  "bin": {
+    "hake": "dist/cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/bang88/hake-cli.git"
