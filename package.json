@@ -15,10 +15,7 @@
   "bugs": {
     "url": "https://github.com/bang88/hake-cli/issues"
   },
-  "homepage": "https://github.com/bang88/hake-cli#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "homepage": "https://github.com/bang88/hake-cli#readme", 
   "keywords": [],
   "devDependencies": {
     "@types/node": "^7.0.5",
