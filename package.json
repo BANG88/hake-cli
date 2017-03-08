@@ -1,0 +1,34 @@
+{
+  "name": "hake-cli",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "bin": "dist/cli.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bang88/hake-cli.git"
+  },
+  "author": "bang <sqibang@gmail.com>",
+  "license": "MIT",
+  "description": "A tiny helper tool",
+  "bugs": {
+    "url": "https://github.com/bang88/hake-cli/issues"
+  },
+  "homepage": "https://github.com/bang88/hake-cli#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "antd-local-icon-font": "^1.0.2",
+    "meow": "^3.7.0",
+    "rimraf": "^2.6.1"
+  },
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ]
+}
