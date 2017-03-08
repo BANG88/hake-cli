@@ -1,6 +1,6 @@
 {
   "name": "hake-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "bin": {
     "hake": "dist/cli.js"
@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/bang88/hake-cli/issues"
   },
-  "homepage": "https://github.com/bang88/hake-cli#readme", 
+  "homepage": "https://github.com/bang88/hake-cli#readme",
   "keywords": [],
   "devDependencies": {
     "@types/node": "^7.0.5",
