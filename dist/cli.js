@@ -12,9 +12,11 @@ if (subCommands.length) {
     var command = subCommands[0];
     switch (command) {
         case 'clean':
-            index_1.clean(cli.flags);
             if (cli.flags.optimize) {
                 index_1.deleteFiles(cli.flags.files);
+            }
+            else {
+                index_1.clean(cli.flags);
             }
             break;
         default:

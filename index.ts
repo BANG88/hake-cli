@@ -9,5 +9,11 @@ export const clean = (options) => {
 }
 
 export const deleteFiles = (globFile = 'build/**/*.map') => {
-    rm(globFile)
+    rm(globFile, (err) => {
+        if (err) {
+            console.error(err)
+        } else {
+            console.log('Files removed.')
+        }
+    })
 }

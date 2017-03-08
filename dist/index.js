@@ -11,6 +11,13 @@ exports.clean = function (options) {
 };
 exports.deleteFiles = function (globFile) {
     if (globFile === void 0) { globFile = 'build/**/*.map'; }
-    rm(globFile);
+    rm(globFile, function (err) {
+        if (err) {
+            console.error(err);
+        }
+        else {
+            console.log('Files removed.');
+        }
+    });
 };
 //# sourceMappingURL=index.js.map

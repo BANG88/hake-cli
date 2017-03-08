@@ -33,9 +33,10 @@ if (subCommands.length) {
     const command = subCommands[0]
     switch (command) {
         case 'clean':
-            clean(cli.flags)
             if (cli.flags.optimize) {
                 deleteFiles(cli.flags.files)
+            } else {
+                clean(cli.flags)
             }
             break;
         default:
