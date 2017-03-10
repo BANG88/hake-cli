@@ -45,6 +45,10 @@ exports.generate = function (generator, plopCfg) {
         process.exit(1);
     }
 };
+/**
+ * choose  option from list
+ * @param plopList plop generators
+ */
 function chooseOptionFromList(plopList) {
     var plop = nodePlop();
     var generator = plop.setGenerator('choose', {

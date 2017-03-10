@@ -41,6 +41,10 @@ export const generate = (generator?: string, plopCfg?) => {
         process.exit(1);
     }
 }
+/**
+ * choose  option from list
+ * @param plopList plop generators
+ */
 function chooseOptionFromList(plopList) {
     const plop = nodePlop();
     const generator = plop.setGenerator('choose', {

@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/bang88/hake-cli#readme",
   "keywords": [],
+  "scripts": {
+    "dev": "tsc -w"
+  },
   "devDependencies": {
     "@types/node": "^7.0.5",
     "typescript": "^2.2.1"
@@ -28,9 +31,5 @@
     "node-plop": "^0.5.5",
     "rimraf": "^2.6.1"
   },
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist/",
-    "generators/"
-  ]
+  "typings": "index.d.ts"
 }
