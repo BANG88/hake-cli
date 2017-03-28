@@ -5,7 +5,8 @@
         "target": "es5",
         "noImplicitAny": false,
         "sourceMap": true,
-        "declaration": true
+        "declaration": true,
+        "importHelpers": true
     },
     "files": [
         "index.ts",
