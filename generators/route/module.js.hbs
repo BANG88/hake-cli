@@ -1,4 +1,4 @@
-import { handle } from 'redux-pack'
+import { handle, Action } from 'hake-redux'
 import { Map } from 'immutable'
 
 /*
@@ -8,12 +8,12 @@ export const LOAD_{{ constantCase props }} = 'LOAD_{{ constantCase props }}'
 
 /**
  * {{ properCase props }} actions
- * @returns ReduxPackAction
+ * @returns Action
  */
-export const load{{ properCase props }} = (): ReduxPackAction => {
+export const load{{ properCase props }} = (): Action => {
     return {
         type: LOAD_{{ constantCase props }},
-        promise: http => http.get('/{{  props }}')
+        promise: http => http.post('/{{  props }}')
     }
 }
 
@@ -22,20 +22,23 @@ export const load{{ properCase props }} = (): ReduxPackAction => {
  * @param  {[]}} 
  */
 export const initialState = Map({
-    {{ props }}: []
+    {{ props }}: null,
+    loading: false
 })
 /**
  * {{ properCase name }} reducer
  * @param  {} state=initialState
  * @param  {} action
  */
-export default (state = initialState, action: ReduxPackFinalAction) => {
+export default (state = initialState, action: Action) => {
 
     const { type, payload } = action
     switch (type) {
         case LOAD_{{ constantCase props }}:
-            return handle(state, action, {
-                success: s => state.set('{{ props }}', payload.data)
+            return handle(state, action, {                
+                start: s => state.set('loading', true),
+                success: s => state.set('{{ props }}', payload.data).set('loading', false),
+                failure: s => state.set('{{ props }}', payload.data).set('loading', false)
             })
         default:
             return state
