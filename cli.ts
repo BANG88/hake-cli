@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var meow = require('meow');
-
+import modularTypescriptImport from 'modular-typescript-import' 
 import { clean, deleteFiles, generate, } from './index'
 
 const cli: { input: string[], flags: { [key: string]: any, destBasePath: string } } = meow([
@@ -9,6 +9,7 @@ const cli: { input: string[], flags: { [key: string]: any, destBasePath: string 
     Usage
 
         $ hake clean            remove or replace any content we don't need
+        $ hake modular          modular typescript import
         $ hake g|generate       generate a new component
 
     Options
@@ -22,6 +23,10 @@ const cli: { input: string[], flags: { [key: string]: any, destBasePath: string 
                 --newFontsPath       
             Remove files 
                 --files a glob pattern for remove 
+
+        $ hake modular
+        --pattern  glob pattern match your files [Default: src/**/*.@(tsx|ts)]
+        --dist  the destination will write file to [Default: '']
 
         $ hake generate
         --name specify the generator's name default is route
@@ -45,6 +50,10 @@ if (subCommands.length) {
             } else {
                 clean(cli.flags)
             }
+            break;
+        case 'modular':
+            const { pattern, dist, ...options } = cli.flags
+            modularTypescriptImport({ pattern, dist, options })
             break;
         case 'generate':
         case 'g':

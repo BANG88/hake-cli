@@ -268,7 +268,7 @@ get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
 
-glob@^7.0.3, glob@^7.0.5:
+glob@^7.0.3, glob@^7.0.5, glob@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
@@ -503,6 +503,15 @@ mkdirp@^0.5.1:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+modular-typescript-import@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/modular-typescript-import/-/modular-typescript-import-0.0.3.tgz#104e28241a6b5b09c9f3e1cf9844fb8d8cc1288e"
+  dependencies:
+    glob "^7.1.1"
+    meow "^3.7.0"
+    mkdirp "^0.5.1"
+    tslib "^1.6.0"
 
 mute-stream@0.0.6:
   version "0.0.6"
