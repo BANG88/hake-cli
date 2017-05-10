@@ -4,7 +4,7 @@ var antd_local_icon_font_1 = require("antd-local-icon-font");
 var rm = require('rimraf');
 var chalk = require('chalk');
 var nodePlop = require('node-plop');
-var path = require("path");
+var appRoot = require('app-root-path');
 /**
  * replace icon fonts and clean map files
  * @param options
@@ -30,7 +30,7 @@ exports.deleteFiles = function (globFile) {
  */
 exports.generate = function (generator, plopCfg) {
     var generators;
-    var plop = nodePlop(path.resolve(__dirname, '../generators/index.js'), plopCfg);
+    var plop = nodePlop(appRoot.resolve('/generators/index.js'), plopCfg);
     generators = plop.getGeneratorList();
     if (!generator) {
         chooseOptionFromList(generators).then(function (generatorName) {

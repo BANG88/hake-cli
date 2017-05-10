@@ -3,7 +3,7 @@ const rm = require('rimraf')
 const chalk = require('chalk');
 const nodePlop = require('node-plop');
 import * as path from 'path'
-
+const appRoot = require('app-root-path');
 /**
  * replace icon fonts and clean map files  
  * @param options 
@@ -28,7 +28,7 @@ export const deleteFiles = (globFile = 'build/**/*.map') => {
  */
 export const generate = (generator?: string, plopCfg?) => {
     let generators
-    const plop = nodePlop(path.resolve(__dirname, '../generators/index.js'), plopCfg)
+    const plop = nodePlop(appRoot.resolve('/generators/index.js'), plopCfg)
     generators = plop.getGeneratorList();
     if (!generator) {
         chooseOptionFromList(generators).then(function (generatorName) {
