@@ -4,6 +4,8 @@ var antd_local_icon_font_1 = require("antd-local-icon-font");
 var rm = require('rimraf');
 var chalk = require('chalk');
 var nodePlop = require('node-plop');
+var path = require("path");
+var fs = require("fs");
 var appRoot = require('app-root-path');
 /**
  * replace icon fonts and clean map files
@@ -31,8 +33,8 @@ exports.deleteFiles = function (globFile) {
 exports.generate = function (generator, plopCfg) {
     var generators;
     var rootGenerators = appRoot.resolve('/generators/index.js');
-    if (!rootGenerators) {
-        rootGenerators = require.resolve('./generators/index.js');
+    if (!fs.existsSync(rootGenerators)) {
+        rootGenerators = path.resolve('node_modules/hake-cli/generators/index.js');
     }
     var plop = nodePlop(rootGenerators, plopCfg);
     generators = plop.getGeneratorList();

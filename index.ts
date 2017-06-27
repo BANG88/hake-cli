@@ -3,6 +3,7 @@ const rm = require('rimraf')
 const chalk = require('chalk');
 const nodePlop = require('node-plop');
 import * as path from 'path'
+import * as fs from 'fs'
 const appRoot = require('app-root-path');
 /**
  * replace icon fonts and clean map files  
@@ -29,8 +30,8 @@ export const deleteFiles = (globFile = 'build/**/*.map') => {
 export const generate = (generator?: string, plopCfg?) => {
     let generators
     let rootGenerators = appRoot.resolve('/generators/index.js')
-    if(!rootGenerators){
-        rootGenerators = require.resolve('./generators/index.js')
+    if(!fs.existsSync(rootGenerators)){
+        rootGenerators = path.resolve('node_modules/hake-cli/generators/index.js')
     }
     const plop = nodePlop(rootGenerators, plopCfg)
     generators = plop.getGeneratorList();
