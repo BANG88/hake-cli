@@ -44,7 +44,7 @@ function getPrevPath({ path, isSubRoute }) {
   const p = path.substr(0, path.lastIndexOf('/'))
   if (!isSubRoute) return path
   // if (!prefix) return `${p}/route.js`
-  return getPath({ path: p, isSubRoute }, 'route.js')
+  return getPath({ path: p, isSubRoute }, 'index.tsx')
 }
 exports.getPrevPath = getPrevPath
 

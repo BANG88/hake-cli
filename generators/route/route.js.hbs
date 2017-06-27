@@ -33,7 +33,7 @@ export default (store: Store<any>): RouteConfig => ({
     getChildRoutes(location, cb) {
         require.ensure([], (require) => {
             cb(null, [
-               // require('./Detail').default(store)
+               // -- APPEND ITEMS HERE --
             ])
         })
     },
