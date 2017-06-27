@@ -30,8 +30,13 @@ exports.deleteFiles = function (globFile) {
  */
 exports.generate = function (generator, plopCfg) {
     var generators;
-    var plop = nodePlop(appRoot.resolve('/generators/index.js'), plopCfg);
+    var rootGenerators = appRoot.resolve('/generators/index.js');
+    if (!rootGenerators) {
+        rootGenerators = require.resolve('./generators/index.js');
+    }
+    var plop = nodePlop(rootGenerators, plopCfg);
     generators = plop.getGeneratorList();
+    // fix if no generators found in current project
     if (!generator) {
         chooseOptionFromList(generators).then(function (generatorName) {
             doThePlop(plop.getGenerator(generatorName));

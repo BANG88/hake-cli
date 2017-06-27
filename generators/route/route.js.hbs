@@ -15,7 +15,11 @@ export default (store: Store<any>): RouteConfig => ({
             // inject reducer to the store on key '{{ camelCase name }}'
             const reducer = require('./service').default
             store.injectReducer({
+                {{#if isSubRoute}}
+                key: '{{ camelCase path }}',
+                {{else}}
                 key: '{{ camelCase name }}',
+                {{/if}}  
                 reducer,
             })
             {{/if}}

@@ -3,7 +3,7 @@
  */
 
 // const componentExists = require('../utils/componentExists')
-const { getPath, getPrevPath, isSubRoute } = require('../utils')
+const { getPath, getPrevPath, isSubRoute,checkRouteExists } = require('../utils')
 module.exports = {
   description: 'Add a Route',
   prompts: [{
@@ -29,13 +29,13 @@ module.exports = {
         if ((/.+/).test(value)) {
           // console.log(value.substr(0, value.length / 2), getPrevPath(value))
 
-          return true // checkRouteExists(value) ? true : '没有找到上一级route.js配置'
+         return true  // checkRouteExists(value) ? true : '没有找到上一级route.js配置'
         }
         return 'path is required'
       },
-      // filter: (value) => {
-      //   return value.startsWith('/') ? value : `/${value}`
-      // }
+      filter: (value) => {
+        return value.startsWith('/') ? value : `/${value}`
+      }
     },
     {
       type: 'confirm',

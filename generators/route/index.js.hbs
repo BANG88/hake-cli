@@ -20,7 +20,7 @@ import './style.css'
 declare interface {{ properCase name }}Props {
     children?: React.ReactNode
     {{#if wantActionsAndReducer}}
-    load{{ properCase props }}: Function    
+    load{{ properCase props }}: typeof load{{ properCase props }}     
     {{/if}}
 }
 declare interface {{ properCase name }}State { }
@@ -66,7 +66,11 @@ class {{ properCase name }} extends React.Component<{{ properCase name }}Props, 
 
 {{#if wantActionsAndReducer}}
 const mapStateToProps = (state) => {
+  {{#if isSubRoute}}
+  const {{ camelCase name }} = state.get('{{ camelCase path }}').toJS()
+  {{else}}
   const {{ camelCase name }} = state.get('{{ camelCase name }}').toJS()
+  {{/if}}  
   return {{ camelCase name }}
 }
 
