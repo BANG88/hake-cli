@@ -28,8 +28,13 @@ export const deleteFiles = (globFile = 'build/**/*.map') => {
  */
 export const generate = (generator?: string, plopCfg?) => {
     let generators
-    const plop = nodePlop(appRoot.resolve('/generators/index.js'), plopCfg)
+    let rootGenerators = appRoot.resolve('/generators/index.js')
+    if(!rootGenerators){
+        rootGenerators = require.resolve('./generators/index.js')
+    }
+    const plop = nodePlop(rootGenerators, plopCfg)
     generators = plop.getGeneratorList();
+    // fix if no generators found in current project
     if (!generator) {
         chooseOptionFromList(generators).then(function (generatorName) {
             doThePlop(plop.getGenerator(generatorName));
